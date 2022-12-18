@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iengels <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ndivjak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:57:30 by iengels           #+#    #+#             */
-/*   Updated: 2022/12/18 01:41:58 by iengels          ###   ########.fr       */
+/*   Updated: 2022/12/18 08:07:34 by ndivjak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct s_list //typedef struct
+typedef struct s_list // typedef struct
 {
 	unsigned int data;
 	struct s_list *next;
-}		t_list;
+	struct s_list *last;
+} t_list;
 
-t_list	*ft_lstnew(unsigned int content)
+t_list *ft_lstnew(unsigned int content)
 {
-	t_list	*new;
+	t_list *new;
 
 	new = malloc(sizeof(t_list));
 	new->data = content;
@@ -30,20 +31,20 @@ t_list	*ft_lstnew(unsigned int content)
 	return (new);
 }
 
-void	ft_add_front(t_list **head, unsigned int number)
+void ft_add_front(t_list *head, unsigned int number)
 {
-	t_list	*new;
+	t_list *new;
 
 	new = ft_lstnew(number);
-	new->next = *head;
-	*head = new;
+	new->next = head;
+	head = new;
 }
 
-void	ft_add_back(t_list **beginn, unsigned int number) //ads node in the back
+void ft_add_back(t_list *beginn, unsigned int number) // ads node in the back
 {
 	t_list *temp;
 
-	temp = *beginn;
+	temp = beginn;
 	while (temp->next)
 		temp = temp->next;
 	temp->next = ft_lstnew(number);
@@ -106,16 +107,16 @@ void	ft_add_back(t_list **beginn, unsigned int number) //ads node in the back
 // 	return (0);
 // }
 
-t_list	*ft_happylist(int ac, char **av)
+t_list *ft_happylist(int ac, char **av)
 {
-	t_list			*head;
-	unsigned int	happy;
-	unsigned int	j;
-	int				i;
-	t_list			*shit;
+	t_list *head;
+	unsigned int happy;
+	unsigned int j;
+	int i;
+	t_list *shit;
 
 	j = 1;
-	head = ft_lstnew(10);
+	head = ft_lstnew(0);
 	while (j < ac)
 	{
 		i = atoi(av[j]);
@@ -123,7 +124,7 @@ t_list	*ft_happylist(int ac, char **av)
 			happy = i ^ 2147483648;
 		else
 			happy = i | 2147483648;
-		ft_add_back(&head, happy);
+		ft_add_back(head, happy);
 		j++;
 	}
 	shit = head->next;
@@ -131,35 +132,47 @@ t_list	*ft_happylist(int ac, char **av)
 	return (shit);
 }
 
-void	ft_freeshitting(t_list *head)
+void ft_freeshitting(t_list *head)
 {
 	if (!(head->next == NULL))
 		ft_freeshitting(head->next);
 	free(head);
 }
 
-void	ft_print_list(t_list **head) //prints out a list;
+void ft_print_list(t_list *head) // prints out a list;
 {
-	t_list *temp;
-
-	temp = *head;
-	while (temp)
+	while (head)
 	{
-		printf("%u\n", temp->data);
-		temp = temp->next;
+		printf("%u\n", head->data);
+		head = head->next;
 	}
 }
 
-int	main(int ac, char **av)
+void ft_applyradix(t_list *head)
 {
-	t_list	*head;
+}
+
+void rl(t_list *head)
+{
+}
+void rrl(t_list *head)
+{
+}
+void pl(t_list *a, t_list *b)
+{
+}
+
+int main(int ac, char **av)
+{
+	t_list *head;
 
 	// if (ac <= 1 || ft_is_valid(ac, av) == 1)
 	// 	printf("Error");
 	// else
 	// {
 	head = ft_happylist(ac, av);
-	ft_print_list(&head);
+	ft_applyradix(head);
+	ft_print_list(head);
 	ft_freeshitting(head);
 	printf("\n");
 	return (0);
