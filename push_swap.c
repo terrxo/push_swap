@@ -6,7 +6,7 @@
 /*   By: ndivjak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:57:30 by iengels           #+#    #+#             */
-/*   Updated: 2022/12/18 08:07:34 by ndivjak          ###   ########.fr       */
+/*   Updated: 2022/12/18 08:47:08 by ndivjak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list *ft_lstnew(unsigned int content)
 	new = malloc(sizeof(t_list));
 	new->data = content;
 	new->next = NULL;
+	new->last = new;
 	return (new);
 }
 
@@ -37,17 +38,15 @@ void ft_add_front(t_list *head, unsigned int number)
 
 	new = ft_lstnew(number);
 	new->next = head;
+	new->last = head->last;
 	head = new;
 }
 
-void ft_add_back(t_list *beginn, unsigned int number) // ads node in the back
+void ft_add_back(t_list *begin, unsigned int number) // ads node in the back
 {
-	t_list *temp;
 
-	temp = beginn;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = ft_lstnew(number);
+	begin->last->next = ft_lstnew(number);
+	begin->last = begin->last->next;
 }
 
 // int	ft_error2(char *str, int minus)
@@ -128,6 +127,7 @@ t_list *ft_happylist(int ac, char **av)
 		j++;
 	}
 	shit = head->next;
+	shit->last = head->last;
 	free(head);
 	return (shit);
 }
@@ -165,12 +165,14 @@ void pl(t_list *a, t_list *b)
 int main(int ac, char **av)
 {
 	t_list *head;
+	char *temp[] = {"shithead", "0", "-1", "1"};
 
 	// if (ac <= 1 || ft_is_valid(ac, av) == 1)
 	// 	printf("Error");
 	// else
 	// {
-	head = ft_happylist(ac, av);
+	head = ft_happylist(4, temp);
+	// head = ft_happylist(ac, av);
 	ft_applyradix(head);
 	ft_print_list(head);
 	ft_freeshitting(head);
