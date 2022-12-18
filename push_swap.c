@@ -6,7 +6,7 @@
 /*   By: ndivjak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:57:30 by iengels           #+#    #+#             */
-/*   Updated: 2022/12/18 08:47:08 by ndivjak          ###   ########.fr       */
+/*   Updated: 2022/12/18 09:40:10 by ndivjak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,12 +152,32 @@ void ft_applyradix(t_list *head)
 {
 }
 
-void rl(t_list *head)
+// Rotate list
+t_list *rl(t_list *head)
 {
+	t_list *temp;
+	temp = head->next;
+	temp->last = head;
+	head->next = NULL;
+	head->last->next = head;
+	return temp;
 }
-void rrl(t_list *head)
+
+// Reverse rotate list
+t_list *rrl(t_list *head)
 {
+	t_list *temp;
+	head->last->next = head;
+	head = head->last;
+	temp = head;
+	while (head->next != temp)
+		head = head->next;
+	head->next = NULL;
+	temp->last = head;
+	return temp;
 }
+
+// Push a to b list
 void pl(t_list *a, t_list *b)
 {
 }
@@ -174,6 +194,8 @@ int main(int ac, char **av)
 	head = ft_happylist(4, temp);
 	// head = ft_happylist(ac, av);
 	ft_applyradix(head);
+	head = rl(head);
+	head = rl(head);
 	ft_print_list(head);
 	ft_freeshitting(head);
 	printf("\n");
