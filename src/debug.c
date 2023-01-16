@@ -7,4 +7,5 @@ void	debug_print_stack(t_list *stack)
 		ft_printf("%u\n", stack->data);
 		stack = stack->next;
 	}
+	ft_printf("%u\n", stack->data);
 }

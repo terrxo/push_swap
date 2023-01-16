@@ -7,7 +7,10 @@
             "name": "Debug",
             "program": "${workspaceFolder}/push_swap",
             "args": [
-                "20 14 5 4 1 9 -12 -30 -42 -1 0"
+                "20", "14", "3",
+                 "5", "4", "1",
+                 "9", "-12", "-30",
+                 "-42", "-1", "0"
             ],
             "cwd": "${workspaceFolder}"
         },
@@ -17,7 +20,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/push_swap",
             "args": [
-                "20 14 5 4 1 9 -12 -30 -42 -1 0"
+                "20", "14", "3",
+                 "5", "4", "1",
+                 "9", "-12", "-30",
+                 "-42", "-1", "0"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
