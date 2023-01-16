@@ -13,4 +13,11 @@ typedef struct s_list
 	struct s_list	*last;
 }					t_list;
 
+t_list				*lst_create_stack(int ac, char **av);
+
+t_list				*lst_new(int content);
+void				lst_add_back(t_list *start, int data);
+
+void				debug_print_stack(t_list *stack);
+
 #endif

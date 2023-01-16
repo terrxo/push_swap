@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-			$(MAKE) all bonus -C ./libft
+			$(MAKE) all -C ./libft
 			cp libft/libft.a $(NAME)
 			ar -rcs $(NAME) libft/libft.a $(OBJS)
 
