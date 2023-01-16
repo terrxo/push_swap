@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndivjak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:57:30 by iengels           #+#    #+#             */
-/*   Updated: 2022/12/18 09:40:10 by ndivjak          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:07:14 by ndivjak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "../push_swap.h"
 
 typedef struct s_list // typedef struct
 {
 	unsigned int data;
 	struct s_list *next;
+	struct s_list *previous;
 	struct s_list *last;
-} t_list;
+}		t_list;
 
-t_list *ft_lstnew(unsigned int content)
+t_list	*ft_lstnew(unsigned int content)
 {
-	t_list *new;
+	t_list	*new;
 
 	new = malloc(sizeof(t_list));
 	new->data = content;
@@ -32,9 +31,9 @@ t_list *ft_lstnew(unsigned int content)
 	return (new);
 }
 
-void ft_add_front(t_list *head, unsigned int number)
+void	ft_add_front(t_list *head, unsigned int number)
 {
-	t_list *new;
+	t_list	*new;
 
 	new = ft_lstnew(number);
 	new->next = head;
@@ -42,77 +41,19 @@ void ft_add_front(t_list *head, unsigned int number)
 	head = new;
 }
 
-void ft_add_back(t_list *begin, unsigned int number) // ads node in the back
+void	ft_add_back(t_list *begin, unsigned int number) // ads node in the back
 {
-
 	begin->last->next = ft_lstnew(number);
 	begin->last = begin->last->next;
 }
 
-// int	ft_error2(char *str, int minus)
-// {
-// 	if (minus == 1)
-// 	{
-// 		if (ft_strlen(&str[1]) == 10 && (ft_strcmp(str, "-2147483648") > 0))
-// 			return (1);
-// 		else if (ft_strlen(&str[1]) > 10)
-// 			return (1);
-// 		else
-// 			return (0);
-// 	}
-// 	else
-// 	{
-// 		if (ft_strlen(str) == 10 && (ft_strcmp(str, "2147483647") > 0))
-// 			return (1);
-// 		else if (ft_strlen(str) > 10)
-// 			return (1);
-// 		else
-// 			return (0);
-// 	}
-// }
-// int	ft_error(char *str)
-// {
-// 	int	i;
-// 	int	minus;
-
-// 	minus = 0;
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (!(str[i] >= '0' && str[i] <= '9'))
-// 		{
-// 			if (str[i] == '-' && minus == 0)
-// 				minus = 1;
-// 			else
-// 				return (1);
-// 		}
-// 		i++;
-// 	}
-// 	i = 0;
-// 	return (ft_error2(str, minus));
-// }
-
-// int	ft_is_valid(int ac, char **av)
-// {
-// 	int	i;
-
-// 	i = 1;
-// 	while (i > ac)
-// 	{
-// 		if (ft_error_1(av[i]) == 1)
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-t_list *ft_happylist(int ac, char **av)
+t_list	*ft_happylist(int ac, char **av)
 {
-	t_list *head;
-	unsigned int happy;
-	unsigned int j;
-	int i;
-	t_list *shit;
+	t_list			*head;
+	unsigned int	happy;
+	unsigned int	j;
+	int				i;
+	t_list			*shit;
 
 	j = 1;
 	head = ft_lstnew(0);
@@ -132,14 +73,14 @@ t_list *ft_happylist(int ac, char **av)
 	return (shit);
 }
 
-void ft_freeshitting(t_list *head)
+void	ft_freeshitting(t_list *head)
 {
 	if (!(head->next == NULL))
 		ft_freeshitting(head->next);
 	free(head);
 }
 
-void ft_print_list(t_list *head) // prints out a list;
+void	ft_print_list(t_list *head) // prints out a list;
 {
 	while (head)
 	{
@@ -148,25 +89,27 @@ void ft_print_list(t_list *head) // prints out a list;
 	}
 }
 
-void ft_applyradix(t_list *head)
+void	ft_applyradix(t_list *head)
 {
 }
 
 // Rotate list
-t_list *rl(t_list *head)
+t_list	*rl(t_list *head)
 {
-	t_list *temp;
+	t_list	*temp;
+
 	temp = head->next;
 	temp->last = head;
 	head->next = NULL;
 	head->last->next = head;
-	return temp;
+	return (temp);
 }
 
 // Reverse rotate list
-t_list *rrl(t_list *head)
+t_list	*rrl(t_list *head)
 {
-	t_list *temp;
+	t_list	*temp;
+
 	head->last->next = head;
 	head = head->last;
 	temp = head;
@@ -174,19 +117,20 @@ t_list *rrl(t_list *head)
 		head = head->next;
 	head->next = NULL;
 	temp->last = head;
-	return temp;
+	return (temp);
 }
 
 // Push a to b list
-void pl(t_list *a, t_list *b)
+void	pl(t_list *a, t_list *b)
 {
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list *head;
-	char *temp[] = {"shithead", "0", "-1", "1"};
+	t_list	*head;
+	char	*temp[];
 
+	temp[] = {"shithead", "0", "-1", "1"};
 	// if (ac <= 1 || ft_is_valid(ac, av) == 1)
 	// 	printf("Error");
 	// else
