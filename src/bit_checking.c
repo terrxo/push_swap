@@ -8,7 +8,9 @@ int	is_bit_at_pos(unsigned int byte, int pos)
 int	is_bit_in_lst_at_pos(t_list *stack, int pos)
 {
 	int i = 0;
-	while (stack)
+	t_list *start;
+	start = stack;
+	while (stack != start)
 	{
 		i += is_bit_at_pos(stack->data, pos);
 		stack = stack->next;

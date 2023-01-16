@@ -7,7 +7,7 @@ int	check_rotate(t_list *stack, int pos)
 
 	start = stack;
 	rotations = 0;
-	while (stack->next != start)
+	while (stack != start)
 	{
 		if (is_bit_at_pos(stack->data, pos) == 1)
 			return (rotations);
@@ -24,7 +24,7 @@ int	check_reverse_rotate(t_list *stack, int pos)
 
 	start = stack;
 	rotations = 0;
-	while (stack->previous != start)
+	while (stack != start)
 	{
 		if (is_bit_at_pos(stack->data, pos) == 1)
 			return (rotations);
