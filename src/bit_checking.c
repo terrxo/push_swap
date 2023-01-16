@@ -1,3 +1,5 @@
+#include "../push_swap.h"
+
 int	is_bit_at_pos(unsigned int byte, int pos)
 {
 	if (byte & 1 << pos)

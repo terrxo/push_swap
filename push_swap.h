@@ -10,7 +10,6 @@ typedef struct s_list
 	unsigned int	data;
 	struct s_list	*next;
 	struct s_list	*previous;
-	struct s_list	*last;
 }					t_list;
 
 t_list				*lst_create_stack(int ac, char **av);
