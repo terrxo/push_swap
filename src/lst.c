@@ -50,3 +50,19 @@ t_list	*lst_move_front(t_list *stack, t_list *item)
 	stack->previous = item;
 	return (item);
 }
+
+void	lst_determine_start_pos(t_start_pos *stack_pos, t_list *stack_from,
+		int id)
+{
+	if (id == 1)
+	{
+		stack_pos->a = stack_from->next;
+		stack_pos->b = stack_from;
+	}
+	else if (id == 0)
+	{
+		stack_pos->a = stack_from;
+		stack_pos->b = stack_from->next;
+	}
+	stack_pos->is_sender_a = id;
+}

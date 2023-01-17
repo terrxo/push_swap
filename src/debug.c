@@ -4,6 +4,11 @@ void	debug_print_stack(t_list *stack)
 {
 	t_list	*last;
 
+	if (!stack)
+	{
+		ft_printf("Stack empty!\n");
+		return ;
+	}
 	last = stack->previous;
 	while (stack != last)
 	{
@@ -59,7 +64,9 @@ void	debug_push_stacks(t_list *a, t_list *b, int count)
 		debug_print_stack(stack_pos->a);
 		ft_printf("Stack b:\n");
 		debug_print_stack(stack_pos->b);
+		ft_printf("\n\n");
 	}
+	count = count2;
 	while (count2--)
 	{
 		op_push_stack(stack_pos->b, stack_pos->a, stack_pos);
@@ -67,5 +74,15 @@ void	debug_push_stacks(t_list *a, t_list *b, int count)
 		debug_print_stack(stack_pos->a);
 		ft_printf("Stack b:\n");
 		debug_print_stack(stack_pos->b);
+		ft_printf("\n\n");
+	}
+	while (count--)
+	{
+		op_push_stack(stack_pos->a, stack_pos->b, stack_pos);
+		ft_printf("Stack a:\n");
+		debug_print_stack(stack_pos->a);
+		ft_printf("Stack b:\n");
+		debug_print_stack(stack_pos->b);
+		ft_printf("\n\n");
 	}
 }

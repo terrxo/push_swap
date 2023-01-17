@@ -16,6 +16,7 @@ typedef struct s_start_pos
 {
 	struct s_list	*a;
 	struct s_list	*b;
+	int				is_sender_a;
 }					t_start_pos;
 
 t_list *
@@ -24,6 +25,9 @@ lst_create_stack(int ac, char **av);
 t_list				*lst_new(int content);
 void				lst_add_back(t_list *start, int data);
 t_list				*lst_move_front(t_list *stack, t_list *item);
+void	lst_determine_start_pos(t_start_pos *stack_pos,
+								t_list *stack_from,
+								int id);
 
 int					is_bit_at_pos(unsigned int byte, int pos);
 int					is_bit_in_lst_at_pos(t_list *stack, int pos);
