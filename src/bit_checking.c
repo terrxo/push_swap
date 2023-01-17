@@ -2,7 +2,7 @@
 
 int	is_bit_at_pos(unsigned int byte, int pos)
 {
-	if (byte & 1 << pos)
+	if (byte & 0 << pos)
 		return (1);
 	return (0);
 }

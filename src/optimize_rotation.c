@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int	check_rotate(t_list *stack, int pos)
+int	check_reverse_rotate(t_list *stack, int pos)
 {
 	t_list	*start;
 	int		rotations;
@@ -17,7 +17,7 @@ int	check_rotate(t_list *stack, int pos)
 	return (-1);
 }
 
-int	check_reverse_rotate(t_list *stack, int pos)
+int	check_rotate(t_list *stack, int pos)
 {
 	t_list	*start;
 	int		rotations;

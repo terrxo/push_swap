@@ -16,6 +16,7 @@ t_list				*lst_create_stack(int ac, char **av);
 
 t_list				*lst_new(int content);
 void				lst_add_back(t_list *start, int data);
+void				lst_move_front(t_list *stack, t_list *item);
 
 int					is_bit_at_pos(unsigned int byte, int pos);
 int					is_bit_in_lst_at_pos(t_list *stack, int pos);

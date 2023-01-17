@@ -1,0 +1,5 @@
+Push from stack a to stack b:
+1. If stack b doesn't exist, move item from stack a, remove previous, next return said item.
+2. If stack b exists but has no next or previous, make stack b previous item, and item->next stack b
+
+Before that, take item->next and add it to item->previous->previous and item->next->previous
