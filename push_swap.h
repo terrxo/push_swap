@@ -12,15 +12,28 @@ typedef struct s_list
 	struct s_list	*previous;
 }					t_list;
 
-t_list				*lst_create_stack(int ac, char **av);
+typedef struct s_start_pos
+{
+	struct s_list	*a;
+	struct s_list	*b;
+}					t_start_pos;
+
+t_list *
+lst_create_stack(int ac, char **av);
 
 t_list				*lst_new(int content);
 void				lst_add_back(t_list *start, int data);
-void				lst_move_front(t_list *stack, t_list *item);
+t_list				*lst_move_front(t_list *stack, t_list *item);
 
 int					is_bit_at_pos(unsigned int byte, int pos);
 int					is_bit_in_lst_at_pos(t_list *stack, int pos);
 
 void				debug_print_stack(t_list *stack);
+t_list				*debug_create_stack(int range_lower, int range_upper,
+						int count);
+void				debug_push_stacks(t_list *a, t_list *b, int count);
+
+void				op_push_stack(t_list *stack_from, t_list *stack_to,
+						t_start_pos *stack_pos);
 
 #endif

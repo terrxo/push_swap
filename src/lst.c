@@ -4,7 +4,7 @@ t_list	*lst_new(int content)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(t_list *));
+	new = malloc(sizeof(t_list));
 	new->data = content;
 	new->next = NULL;
 	new->previous = NULL;
@@ -24,17 +24,25 @@ t_list	*lst_last(t_list *stack)
 void	lst_add_back(t_list *stack, int data)
 {
 	t_list	*new_node;
-	t_list	*start;
+	t_list	*last;
 
-	start = stack;
-	stack = lst_last(stack);
 	new_node = lst_new(data);
-	stack->next = new_node;
-	new_node->previous = stack;
-	start->previous = new_node;
+	if (!stack->previous || !stack->next)
+	{
+		stack->previous = new_node;
+		stack->next = new_node;
+		new_node->next = stack;
+		new_node->previous = stack;
+		return ;
+	}
+	last = stack->previous;
+	last->next = new_node;
+	new_node->previous = last;
+	new_node->next = stack;
+	stack->previous = new_node;
 }
 
-void	lst_move_front(t_list *stack, t_list *item)
+t_list	*lst_move_front(t_list *stack, t_list *item)
 {
 	item->previous = stack->previous;
 	item->previous->next = item;
