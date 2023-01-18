@@ -17,6 +17,7 @@ typedef struct s_start_pos
 	struct s_list	*a;
 	struct s_list	*b;
 	int				is_sender_a;
+	int				no_of_rotation;
 }					t_start_pos;
 
 t_list *
@@ -31,6 +32,7 @@ void	lst_determine_start_pos(t_start_pos *stack_pos,
 
 int					is_bit_at_pos(unsigned int byte, int pos);
 int					is_bit_in_lst_at_pos(t_list *stack, int pos);
+int					is_rotate_faster(t_start_pos *stack_pos, int pos);
 
 void				debug_print_stack(t_list *stack);
 t_list				*debug_create_stack(int range_lower, int range_upper,
@@ -39,7 +41,12 @@ void				debug_push_stacks(t_list *a, t_list *b, int count);
 
 void				op_push_stack(t_list *stack_from, t_list *stack_to,
 						t_start_pos *stack_pos);
+void	op_reverse_rotate_stack(t_start_pos *stack_pos,
+								t_list *stack);
+void				op_rotate_stack(t_start_pos *stack_pos, t_list *stack);
 
 int					solve_is_sorted(t_start_pos *stack);
+
+void				radix_controller(t_start_pos *stack_pos);
 
 #endif

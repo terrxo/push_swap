@@ -7,7 +7,7 @@ int	check_reverse_rotate(t_list *stack, int pos)
 
 	start = stack;
 	rotations = 0;
-	while (stack != start)
+	while (stack->next != start)
 	{
 		if (is_bit_at_pos(stack->data, pos) == 1)
 			return (rotations);
@@ -24,7 +24,7 @@ int	check_rotate(t_list *stack, int pos)
 
 	start = stack;
 	rotations = 0;
-	while (stack != start)
+	while (stack->previous != start)
 	{
 		if (is_bit_at_pos(stack->data, pos) == 1)
 			return (rotations);
@@ -34,11 +34,16 @@ int	check_rotate(t_list *stack, int pos)
 	return (-1);
 }
 
-int	is_rotate_faster(t_list *stack, int pos)
+int	is_rotate_faster(t_start_pos *stack_pos, int pos)
 {
-	int rotate = check_rotate(stack, pos);
-	int reverse_rotate = check_reverse_rotate(stack, pos);
+	int rotate = check_rotate(stack_pos->a, pos);
+	int reverse_rotate = check_reverse_rotate(stack_pos->a, pos);
 	if (rotate < reverse_rotate)
+	{
+		stack_pos->no_of_rotation = rotate;
 		return (1);
+	}
+	else
+		stack_pos->no_of_rotation = reverse_rotate;
 	return (0);
 }
