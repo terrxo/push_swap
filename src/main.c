@@ -2,10 +2,14 @@
 
 int	main(int ac, char **av)
 {
-	t_list	*stack;
+	t_list		*stack;
+	t_start_pos	*stack_pos;
 
+	stack_pos = malloc(sizeof(t_start_pos));
 	ft_printf("\nStarting push_swap:\n");
 	stack = lst_create_stack(ac, av);
+	stack_pos->a = stack;
+	printf("is stack sorted: %i\n", solve_is_sorted(stack_pos));
 	debug_print_stack(stack);
 	return (0);
 }

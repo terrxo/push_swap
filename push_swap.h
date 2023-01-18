@@ -40,4 +40,6 @@ void				debug_push_stacks(t_list *a, t_list *b, int count);
 void				op_push_stack(t_list *stack_from, t_list *stack_to,
 						t_start_pos *stack_pos);
 
+int					solve_is_sorted(t_start_pos *stack);
+
 #endif
