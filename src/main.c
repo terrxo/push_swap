@@ -5,13 +5,13 @@ int	main(int ac, char **av)
 	t_list		*stack;
 	t_start_pos	*stack_pos;
 
-	ft_printf("\nStarting push_swap:\n");
+	// ft_printf("\nStarting push_swap:\n");
 	stack_pos = malloc(sizeof(t_start_pos));
 	if (!stack_pos)
 		return (1);
 	stack = lst_create_stack(ac, av);
 	stack_pos->a = stack;
-	ft_printf("Is sorted: %i\n", solve_is_sorted(stack_pos));
+	// ft_printf("Is sorted: %i\n", solve_is_sorted(stack_pos));
 	if (solve_is_sorted(stack_pos))
 		return (0);
 	radix_controller(stack_pos);

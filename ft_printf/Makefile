@@ -10,7 +10,7 @@ all: $(NAME)
 $(NAME):	$(OBJS)
 			$(MAKE) all -C ./libft
 			cp libft/libft.a $(NAME)
-			ar -rcs $(NAME) libft/libft.a $(OBJS)
+			ar -rcs $(NAME) $(OBJS)
 
 $(OBJS):
 			$(CC) $(CFLAGS) -c $(SRCS)

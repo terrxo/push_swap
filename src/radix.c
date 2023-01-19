@@ -46,7 +46,7 @@ void	radix_controller(t_start_pos *stack_pos)
 			radix_solve_bit_pos(stack_pos, bit_pos);
 		if (solve_is_sorted(stack_pos))
 		{
-			ft_printf("Stack is solved\n");
+			// ft_printf("Stack is solved\n");
 			return ;
 		}
 	}

@@ -3,3 +3,26 @@ Push from stack a to stack b:
 2. If stack b exists but has no next or previous, make stack b previous item, and item->next stack b
 
 Before that, take item->next and add it to item->previous->previous and item->next->previous
+
+Previous contents of libftprintf.a:
+libft.a
+ft_printf.o
+ft_print_formats.o
+ft_print_hex_pointer.o
+ft_print_unsigned.o
+
+
+Current contents of libftprintf.a:
+ft_isalnum.o
+ft_isprint.o
+ft_memcmp.o
+ft_putchar_fd.o
+ft_split.o
+ft_strlcat.o
+ft_strncmp.o
+ft_substr.o
+ft_atoi.o
+ft_print_formats.o
+ft_print_hex_pointer.o
+ft_print_unsigned.o
+
