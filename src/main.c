@@ -5,12 +5,15 @@ int	main(int ac, char **av)
 	t_list		*stack;
 	t_start_pos	*stack_pos;
 
-	// ft_printf("\nStarting push_swap:\n");
+	ft_printf("\nStarting push_swap:\n");
+	ft_printf("%s h %s", "THIS IS A ", "TEST");
 	stack_pos = malloc(sizeof(t_start_pos));
 	if (!stack_pos)
 		return (1);
-	stack = lst_create_stack(ac, av);
+	// stack = lst_create_stack(ac, av);
+	stack = debug_create_stack(0, 15, 6);
 	stack_pos->a = stack;
+	debug_print_stack(stack_pos->a);
 	// ft_printf("Is sorted: %i\n", solve_is_sorted(stack_pos));
 	if (solve_is_sorted(stack_pos))
 		return (0);

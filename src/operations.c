@@ -59,7 +59,7 @@ void	op_push_stack(t_list *stack_from, t_list *stack_to,
 	if (!stack_to)
 	{
 		return_stack = stack_from;
-		return_stack->next = NULL;
+		return_stack->next = return_stack;
 		return_stack->previous = return_stack;
 		print_op_correct_pos(stack_pos);
 		return ;

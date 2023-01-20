@@ -1,5 +1,23 @@
 #include "../push_swap.h"
 
+void	debug_printBits(size_t const size, void const *const ptr)
+{
+	unsigned char	*b;
+	unsigned char	byte;
+
+	b = (unsigned char *)ptr;
+	int i, j;
+	for (i = size - 1; i >= 0; i--)
+	{
+		for (j = 7; j >= 0; j--)
+		{
+			byte = (b[i] >> j) & 1;
+			printf("%u", byte);
+		}
+	}
+	puts("");
+}
+
 void	debug_print_stack(t_list *stack)
 {
 	t_list	*last;
@@ -24,28 +42,6 @@ int	debug_print_randoms(int lower, int upper)
 				(upper - lower + 1)) +
 		lower;
 	return (num);
-}
-
-t_list	*debug_create_stack(int range_lower, int range_upper, int count)
-{
-	int		i;
-	int		val;
-	t_list	*stack;
-
-	i = 0;
-	val = 0;
-	while (++i <= count)
-	{
-		// val = debug_print_randoms(range_lower, range_upper);
-		if (i == 1)
-		{
-			stack = lst_new(val);
-		}
-		else
-			lst_add_back(stack, val);
-		val++;
-	}
-	return (stack);
 }
 
 void	debug_push_stacks(t_list *a, t_list *b, int count)
@@ -85,4 +81,24 @@ void	debug_push_stacks(t_list *a, t_list *b, int count)
 		debug_print_stack(stack_pos->b);
 		ft_printf("\n\n");
 	}
+}
+
+t_list	*debug_create_stack(int range_lower, int range_upper, int count)
+{
+	int i;
+	t_list *stack;
+	int val[6] = {16, 10, 42, 23, 98, 14};
+
+	i = -1;
+	while (++i < count)
+	{
+		// val = debug_print_randoms(range_lower, range_upper);
+		if (i == 0)
+		{
+			stack = lst_new(val[i]);
+		}
+		else
+			lst_add_back(stack, val[i]);
+	}
+	return (stack);
 }

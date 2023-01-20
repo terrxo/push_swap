@@ -54,6 +54,8 @@ t_list	*lst_move_front(t_list *stack, t_list *item)
 void	lst_determine_start_pos(t_start_pos *stack_pos, t_list *stack_from,
 		int id)
 {
+	t_list	*check_last;
+
 	if (id == 1)
 	{
 		stack_pos->a = stack_from->next;
@@ -61,8 +63,12 @@ void	lst_determine_start_pos(t_start_pos *stack_pos, t_list *stack_from,
 	}
 	else if (id == 0)
 	{
-		stack_pos->a = stack_from;
+		check_last = stack_pos->b;
 		stack_pos->b = stack_from->next;
+		stack_pos->a = stack_from;
+		if (check_last == check_last->next
+			&& check_last == check_last->previous)
+			stack_pos->b = NULL;
 	}
 	stack_pos->is_sender_a = id;
 }

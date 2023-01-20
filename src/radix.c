@@ -31,7 +31,7 @@ void	radix_solve_bit_pos(t_start_pos *stack_pos, int bit_pos)
 		is_bit = is_bit_in_lst_at_pos(stack_pos->a, bit_pos);
 	}
 	while (stack_pos->b)
-		op_push_stack(stack_pos->b, stack_pos->b, stack_pos);
+		op_push_stack(stack_pos->b, stack_pos->a, stack_pos);
 }
 
 void	radix_controller(t_start_pos *stack_pos)
@@ -44,9 +44,11 @@ void	radix_controller(t_start_pos *stack_pos)
 			return ;
 		if (is_bit_in_lst_at_pos(stack_pos->a, bit_pos))
 			radix_solve_bit_pos(stack_pos, bit_pos);
+		ft_printf("Updated stack:\n");
+		debug_print_stack(stack_pos->a);
 		if (solve_is_sorted(stack_pos))
 		{
-			// ft_printf("Stack is solved\n");
+			ft_printf("Stack is solved\n");
 			return ;
 		}
 	}

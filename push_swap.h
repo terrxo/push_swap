@@ -38,6 +38,7 @@ void				debug_print_stack(t_list *stack);
 t_list				*debug_create_stack(int range_lower, int range_upper,
 						int count);
 void				debug_push_stacks(t_list *a, t_list *b, int count);
+void				debug_printBits(size_t const size, void const *const ptr);
 
 void				op_push_stack(t_list *stack_from, t_list *stack_to,
 						t_start_pos *stack_pos);
