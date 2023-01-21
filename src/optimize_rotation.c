@@ -27,20 +27,18 @@ int	check_rotate(t_list *stack, int pos)
 {
 	t_list	*start;
 	int		rotations;
-	int		loop;
 
-	loop = 0;
 	start = stack;
-	rotations = 0;
-	while (!loop || stack != start)
+	rotations = 1;
+	if (is_bit_at_pos(stack->data, pos))
+		return (0);
+	stack = stack->next;
+	while (stack != start)
 	{
-		if (!loop)
-			loop = 1;
 		if (is_bit_at_pos(stack->data, pos) == 1)
 			return (rotations);
-		stack = stack->previous;
-		if (stack != start)
-			rotations++;
+		rotations++;
+		stack = stack->next;
 	}
 	return (-1);
 }

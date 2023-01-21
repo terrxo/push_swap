@@ -18,18 +18,31 @@ void	radix_rotate_stack(t_start_pos *stack_pos, int use_rotate)
 
 void	radix_solve_bit_pos(t_start_pos *stack_pos, int bit_pos)
 {
-	int	is_bit;
+	int		is_bit;
+	t_list	*start;
 
 	is_bit = 1;
+	is_rotate_faster(stack_pos, bit_pos);
+	is_bit = is_bit_in_lst_at_pos(stack_pos->a, bit_pos);
+	while (!stack_pos->no_of_rotation && is_bit)
+	{
+		op_push_stack(stack_pos->a, stack_pos->b, stack_pos);
+		is_rotate_faster(stack_pos, bit_pos);
+		is_bit = is_bit_in_lst_at_pos(stack_pos->a, bit_pos);
+	}
+	start = stack_pos->a;
 	while (is_bit)
 	{
 		if (is_rotate_faster(stack_pos, bit_pos))
+		{
 			radix_rotate_stack(stack_pos, 1);
+		}
 		else
 			radix_rotate_stack(stack_pos, 0);
 		op_push_stack(stack_pos->a, stack_pos->b, stack_pos);
 		is_bit = is_bit_in_lst_at_pos(stack_pos->a, bit_pos);
 	}
+	stack_pos->a = start;
 	while (stack_pos->b)
 		op_push_stack(stack_pos->b, stack_pos->a, stack_pos);
 }

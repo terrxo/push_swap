@@ -5,12 +5,12 @@ void	op_rotate_stack(t_start_pos *stack_pos, t_list *stack)
 	if (stack_pos->a == stack)
 	{
 		ft_printf("ra\n");
-		stack_pos->a = stack_pos->a->previous;
+		stack_pos->a = stack_pos->a->next;
 	}
 	else
 	{
 		ft_printf("rb\n");
-		stack_pos->b = stack_pos->b->previous;
+		stack_pos->b = stack_pos->b->next;
 	}
 }
 
@@ -19,12 +19,12 @@ void	op_reverse_rotate_stack(t_start_pos *stack_pos, t_list *stack)
 	if (stack_pos->a == stack)
 	{
 		ft_printf("rra\n");
-		stack_pos->a = stack_pos->a->next;
+		stack_pos->a = stack_pos->a->previous;
 	}
 	else
 	{
 		ft_printf("rrb\n");
-		stack_pos->b = stack_pos->b->next;
+		stack_pos->b = stack_pos->b->previous;
 	}
 }
 

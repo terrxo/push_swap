@@ -87,7 +87,7 @@ t_list	*debug_create_stack(int range_lower, int range_upper, int count)
 {
 	int i;
 	t_list *stack;
-	int val[6] = {16, 10, 42, 23, 98, 14};
+	int val[4] = {2, 3, 0, 1};
 
 	i = -1;
 	while (++i < count)
