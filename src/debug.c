@@ -87,18 +87,18 @@ t_list	*debug_create_stack(int range_lower, int range_upper, int count)
 {
 	int i;
 	t_list *stack;
-	int val[4] = {2, 3, 0, 1};
-
+	// int val[6] = {15, 23, 101, 71, 84, 30};
+	int val;
 	i = -1;
 	while (++i < count)
 	{
-		// val = debug_print_randoms(range_lower, range_upper);
+		val = debug_print_randoms(range_lower, range_upper);
 		if (i == 0)
 		{
-			stack = lst_new(val[i]);
+			stack = lst_new(val);
 		}
 		else
-			lst_add_back(stack, val[i]);
+			lst_add_back(stack, val);
 	}
 	return (stack);
 }

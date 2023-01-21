@@ -10,7 +10,7 @@ int	main(int ac, char **av)
 	if (!stack_pos)
 		return (1);
 	// stack = lst_create_stack(ac, av);
-	stack = debug_create_stack(0, 15, 4);
+	stack = debug_create_stack(0, 15, 6);
 	stack_pos->a = stack;
 	debug_print_stack(stack_pos->a);
 	// ft_printf("Is sorted: %i\n", solve_is_sorted(stack_pos));

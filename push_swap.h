@@ -18,6 +18,7 @@ typedef struct s_start_pos
 	struct s_list	*b;
 	int				is_sender_a;
 	int				no_of_rotation;
+	int				is_rotate;
 }					t_start_pos;
 
 t_list *
