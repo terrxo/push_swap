@@ -6,7 +6,7 @@ NAME = push_swap
 
 all:
 			$(MAKE) all -C ./ft_printf
-			cd ./obj/ ; $(CC) $(CFLAGS) -c ../$(SRC)
+			mkdir obj ; cd ./obj ; $(CC) $(CFLAGS) -c ../$(SRC)
 			$(CC) $(CFLAGS) $(OBJ) ./ft_printf/libftprintf.a -o $(NAME) -g
 			
 clean:	
